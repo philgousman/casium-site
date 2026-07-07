@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Casium — The Modern Standard for Business Immigration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  @font-face{
+    font-family:'Signifier';
+    src:url('fonts/signifier-regular.woff2') format('woff2'),
+        url('fonts/signifier-regular.otf') format('opentype');
+    font-weight:400;
+    font-style:normal;
+    font-display:swap;
+  }
+  :root{
+    --cream:#F6F2E8;
+    --cream-2:#FBF9F2;
+    --mint:#E8EFEC;
+    --teal:#1E373C;
+    --teal-2:#132729;
+    --teal-soft:#2C4A50;
+    --yellow:#FBD500;
+    --mint-accent:#6DC6B8;
+    --muted:#5C6F72;
+    --muted-light:#9DB0B2;
+    --border:#D6DCDA;
+    --ink:#1E373C;
+    --serif:'Signifier', ui-serif, Georgia, 'Times New Roman', serif;
+    --sans:'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--teal);
+    background:var(--cream);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-0.015em;color:var(--teal)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  .eyebrow{
+    font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.18em;
+    text-transform:uppercase;color:var(--muted);display:inline-block;margin-bottom:22px;
+  }
+  .eyebrow.on-dark{color:var(--mint-accent)}
+  .serif-italic{font-style:italic;font-weight:400}
+
+  /* highlight accent word on light backgrounds */
+  .hl{
+    font-style:italic;font-weight:500;position:relative;color:var(--teal);
+    background:linear-gradient(180deg, transparent 62%, rgba(251,213,0,0.85) 62%, rgba(251,213,0,0.85) 92%, transparent 92%);
+    padding:0 .04em;
+  }
+  /* yellow accent word on dark backgrounds */
+  .acc{font-style:italic;font-weight:400;color:var(--yellow)}
+
+  /* buttons */
+  .btn{
+    display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:600;
+    font-size:15px;padding:14px 26px;border-radius:100px;transition:all .25s ease;cursor:pointer;border:1px solid transparent;
+  }
+  .btn-primary{background:var(--yellow);color:var(--teal)}
+  .btn-primary:hover{background:#ffe23d;transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(251,213,0,.55)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+  .btn-dark{background:var(--teal);color:#fff}
+  .btn-dark:hover{background:var(--teal-2);transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--teal);border-color:var(--border)}
+  .btn-outline:hover{border-color:var(--teal);background:rgba(30,55,60,.04)}
+  .btn .arw{transition:transform .25s ease}
+  .btn:hover .arw{transform:translateX(3px)}
+
+  /* ===== NAV ===== */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;transition:background .35s ease, box-shadow .35s ease, padding .35s ease;
+    padding:22px 0;
+  }
+  header.scrolled{background:rgba(19,39,41,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(0,0,0,.2);padding:14px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:32px}
+  .logo .logo-img{height:34px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:26px}
+  .nav-item{position:relative;display:flex;align-items:center}
+  .nav-links a,.nav-trigger{font-size:15px;font-weight:450;color:rgba(255,255,255,.9);transition:color .2s;position:relative;white-space:nowrap}
+  .nav-links a:hover,.nav-trigger:hover{color:#fff}
+  header.scrolled .nav-links a,header.scrolled .nav-trigger{color:rgba(255,255,255,.9)}
+  header.scrolled .nav-links a:hover,header.scrolled .nav-trigger:hover{color:#fff}
+  /* dropdown */
+  .nav-trigger{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0}
+  .nav-trigger .chev{width:9px;height:9px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .25s ease;opacity:.75}
+  .nav-item:hover .nav-trigger .chev{transform:rotate(225deg) translateY(-1px)}
+  .dropdown{
+    position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(8px);
+    background:var(--cream-2);border:1px solid var(--border);border-radius:18px;
+    box-shadow:0 24px 60px -24px rgba(15,34,38,.35),0 2px 8px rgba(15,34,38,.06);
+    padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease, transform .22s ease;z-index:120;
+  }
+  .nav-item:hover .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .dropdown::before{content:"";position:absolute;top:-18px;left:0;right:0;height:18px}
+  .dd-mega{display:flex;gap:8px;width:520px}
+  .dd-col{flex:1;display:flex;flex-direction:column}
+  .dd-single{width:246px;display:flex;flex-direction:column}
+  .dd-label{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:10px 14px 6px}
+  .dd-link{display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:12px;transition:background .18s ease}
+  .dd-link:hover{background:var(--mint)}
+  .dd-link .t{font-size:14.5px;font-weight:550;color:var(--teal)!important}
+  .dd-link .d{font-size:12.5px;font-weight:400;color:var(--muted)!important;line-height:1.45}
+  .dd-divider{width:1px;background:var(--border);margin:8px 4px}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-login{font-size:15px;font-weight:500;color:#fff}
+  header.scrolled .nav-login{color:#fff}
+  .nav-cta{background:var(--yellow);color:var(--teal);padding:11px 22px;border-radius:100px;font-size:14px;font-weight:600;transition:all .25s}
+  .nav-cta:hover{background:#ffe23d;transform:translateY(-1px)}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .hamburger span{width:24px;height:2px;background:#fff;transition:.3s}
+  header.scrolled .hamburger span{background:#fff}
+  .mobile-menu{display:none}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;
+    padding:140px 28px 120px;color:#fff;overflow:hidden;
+    background:linear-gradient(180deg,#0f2226 0%, #16302f 100%);
+  }
+  .hero-bg{position:absolute;inset:0;z-index:0}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.55}
+  .hero-bg::after{
+    content:"";position:absolute;inset:0;
+    background:
+      radial-gradient(120% 90% at 50% 20%, rgba(19,39,41,.25) 0%, rgba(19,39,41,.72) 70%, rgba(15,34,38,.92) 100%),
+      linear-gradient(180deg, rgba(15,34,38,.55) 0%, rgba(15,34,38,.2) 40%, rgba(15,34,38,.85) 100%);
+  }
+  .hero-inner{position:relative;z-index:2;max-width:920px}
+  .hero .eyebrow{color:rgba(255,255,255,.72)}
+  .hero h1{
+    font-size:clamp(44px,6.6vw,92px);color:#fff;font-weight:400;letter-spacing:-0.02em;line-height:1.02;
+  }
+  .hero p.sub{
+    margin:30px auto 0;max-width:640px;font-size:clamp(17px,1.5vw,20px);
+    color:rgba(255,255,255,.82);font-weight:400;line-height:1.55;
+  }
+  .hero-ctas{margin-top:42px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .scroll-cue{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.6);font-size:12px;letter-spacing:.15em;text-transform:uppercase;display:flex;flex-direction:column;align-items:center;gap:10px}
+  .scroll-cue .line{width:1px;height:38px;background:linear-gradient(180deg,rgba(255,255,255,.6),transparent);animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
+
+  /* ===== TRUSTED BY ===== */
+  .trusted{background:var(--cream);padding:52px 0 44px;border-bottom:1px solid var(--border)}
+  .trusted p.label{text-align:center;font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:26px;font-weight:600}
+  .logo-row{display:flex;align-items:center;justify-content:center;gap:clamp(28px,5vw,64px);flex-wrap:wrap}
+  .logo-row span{font-family:var(--serif);font-size:clamp(19px,2vw,26px);font-weight:600;color:var(--teal);opacity:.55;letter-spacing:-.01em;transition:opacity .2s}
+  .logo-row span:hover{opacity:.9}
+  .press-row{display:flex;align-items:center;justify-content:center;gap:clamp(20px,4vw,46px);flex-wrap:wrap;margin-top:34px;padding-top:30px;border-top:1px dashed var(--border)}
+  .press-row .pl{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-light);font-weight:600}
+  .press-row .pn{font-family:var(--serif);font-size:clamp(15px,1.6vw,19px);color:var(--muted);font-weight:500}
+
+  /* ===== SECTION SHELL ===== */
+  section{position:relative}
+  .sec{padding:clamp(80px,10vw,138px) 0}
+  .sec-head{max-width:720px}
+  .sec-head.center{margin:0 auto;text-align:center}
+  h2.big{font-size:clamp(32px,4.4vw,58px);font-weight:400;letter-spacing:-0.02em}
+  .lead{font-size:clamp(17px,1.5vw,20px);color:var(--muted);margin-top:22px;line-height:1.6;font-weight:400}
+
+  /* ===== STATS STRIP ===== */
+  .stats{background:var(--teal-2);color:#fff;padding:clamp(56px,7vw,84px) 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;text-align:center}
+  .stat .num{font-family:var(--serif);font-size:clamp(46px,6vw,74px);font-weight:500;color:var(--yellow);line-height:1;letter-spacing:-.02em}
+  .stat .num .u{font-size:.5em;color:var(--yellow)}
+  .stat .lbl{margin-top:14px;font-size:14.5px;color:rgba(255,255,255,.72);letter-spacing:.01em}
+  .stat-div{position:relative}
+  .stats-grid .stat:not(:last-child)::after{content:"";position:absolute;right:-14px;top:12%;height:76%;width:1px;background:rgba(255,255,255,.14)}
+
+  /* ===== PATHWAYS ===== */
+  .pathways{background:var(--mint)}
+  .path-cols{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:56px}
+  .path-card{background:var(--cream-2);border:1px solid var(--border);border-radius:22px;padding:40px 36px}
+  .path-card > h3{font-family:var(--serif);font-size:23px;font-weight:500;margin-bottom:6px}
+  .path-card .pcsub{font-size:14px;color:var(--muted);margin-bottom:26px}
+  .visa{display:flex;align-items:flex-start;gap:16px;padding:16px 0;border-top:1px solid var(--border)}
+  .visa .code{font-family:var(--serif);font-weight:600;font-size:17px;color:var(--teal);flex-shrink:0;width:78px}
+  .visa .vd{font-size:14.5px;color:var(--muted);line-height:1.5}
+  .path-card.gc{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .path-card.gc h3{color:#fff}
+  .path-card.gc .pcsub{color:rgba(255,255,255,.6)}
+  .path-card.gc .visa{border-top-color:rgba(255,255,255,.14)}
+  .path-card.gc .visa .code{color:var(--yellow)}
+  .path-card.gc .visa .vd{color:rgba(255,255,255,.72)}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--teal-2);color:#fff;padding:80px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-brand .logo .logo-img{height:36px}
+  .foot-brand p{color:rgba(255,255,255,.6);font-size:14.5px;margin-top:20px;max-width:280px;line-height:1.6}
+  .foot-col h5{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint-accent);margin-bottom:18px;font-weight:600}
+  .foot-col a{display:block;color:rgba(255,255,255,.72);font-size:14.5px;padding:6px 0;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:30px;flex-wrap:wrap;gap:14px}
+  .foot-bottom p{color:rgba(255,255,255,.5);font-size:13.5px}
+  .foot-bottom .fb-links{display:flex;gap:24px}
+  .foot-bottom .fb-links a{color:rgba(255,255,255,.5);font-size:13.5px}
+  .foot-bottom .fb-links a:hover{color:#fff}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:960px){
+    .stats-grid{grid-template-columns:repeat(2,1fr);gap:40px 20px}
+    .stats-grid .stat:not(:last-child)::after{display:none}
+    .foot-top{grid-template-columns:1fr 1fr}
+    .foot-brand{grid-column:1/-1}
+  }
+  @media(max-width:1180px){
+    .nav-links,.nav-login{display:none}
+    .hamburger{display:flex}
+    .mobile-menu.open{display:block;position:fixed;inset:0;top:0;z-index:99;background:var(--teal);padding:100px 32px 40px;display:flex;flex-direction:column;gap:6px}
+    .mobile-menu a{color:#fff;font-family:var(--serif);font-size:28px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .mobile-menu .btn{margin-top:24px;justify-content:center}
+  }
+  @media(max-width:820px){
+    .path-cols{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 20px}
+    .stats-grid{grid-template-columns:1fr;gap:36px}
+    .hero-ctas{flex-direction:column;align-items:stretch}
+    .hero-ctas .btn{justify-content:center}
+  }
+
+  /* ===== GLOBAL MOBILITY (new) ===== */
+  .gm{background:var(--teal);color:#fff;overflow:hidden}
+  .gm .eyebrow{color:var(--mint-accent)}
+  .gm-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+  .gm h2{color:#fff;font-size:clamp(32px,4.4vw,56px);font-weight:400;max-width:15ch}
+  .gm-body{color:rgba(255,255,255,.72);font-size:clamp(17px,1.5vw,20px);margin-top:22px;line-height:1.6;max-width:520px}
+  .gm-chips{display:flex;gap:10px;margin-top:28px;flex-wrap:wrap}
+  .gm-chip{font-size:12.5px;color:rgba(255,255,255,.82);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:8px 14px;display:inline-flex;align-items:center;gap:8px}
+  .gm-chip .d{width:6px;height:6px;border-radius:50%;background:var(--yellow)}
+  .gm-globe{display:flex;justify-content:center;align-items:center}
+  .gm-globe-wrap{position:relative;width:100%;max-width:500px;animation:gmFloat 9s ease-in-out infinite;filter:drop-shadow(0 0 46px rgba(109,198,184,.22))}
+  .gm-globe-img{display:block;width:100%;height:auto;opacity:.94}
+  @keyframes gmFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .gm-hub{position:absolute;width:14px;height:14px;margin:-7px 0 0 -7px;border-radius:50%;border:1.4px solid rgba(251,213,0,.85);animation:gmPulse 3s ease-out infinite;pointer-events:none}
+  .gm-hub2{animation-delay:.6s}
+  .gm-hub3{animation-delay:1.1s;border-color:rgba(109,198,184,.85)}
+  .gm-hub4{animation-delay:1.7s}
+  .gm-hub5{animation-delay:2.3s;border-color:rgba(109,198,184,.85)}
+  @keyframes gmPulse{0%{transform:scale(.5);opacity:.9}75%{transform:scale(2.2);opacity:0}100%{transform:scale(2.2);opacity:0}}
+
+  /* ===== TWO PILLARS (new) ===== */
+  .pil{background:var(--cream)}
+  .pil-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:52px}
+  .pil-card{display:flex;flex-direction:column}
+  .pil-img{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#E8EFEC,#E8EFEC 13px,#eef4f0 13px,#eef4f0 26px)}
+  .pil-ph{display:flex;flex-direction:column;align-items:center;gap:9px;color:var(--muted-light)}
+  .pil-ph svg{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:1.4}
+  .pil-ph span{font-size:12px;letter-spacing:.03em}
+  .pil-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.08)}
+  .pil-img:has(.pil-photo){background:var(--cream,#fbf7ef);border:none}
+  .pil-chip{position:absolute;left:16px;bottom:16px;background:var(--teal);color:#fff;font-size:12.5px;font-weight:500;padding:8px 14px;border-radius:100px;display:inline-flex;align-items:center;gap:8px;box-shadow:0 12px 26px -12px rgba(0,0,0,.5)}
+  .pil-chip .d{width:6px;height:6px;border-radius:50%;background:var(--yellow)}
+  .pil-card h3{font-family:var(--serif);font-size:clamp(22px,2.4vw,28px);font-weight:500;margin:24px 0 12px}
+  .pil-card p{color:var(--muted);font-size:16px;line-height:1.6}
+
+  /* ===== PLATFORM (new, pf) ===== */
+  .pf{background:var(--teal);color:#fff;overflow:hidden}
+  .pf .eyebrow{color:var(--mint-accent)}
+  .pf h2.big{color:#fff}
+  .pf-head{max-width:760px}
+  .pf-lead{font-size:clamp(16px,1.5vw,19px);color:rgba(255,255,255,.72);margin-top:20px;max-width:640px}
+  .pf-stage{margin-top:56px}
+  .pf-rowlabel{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:600;margin-bottom:18px}
+  .pf-rowlabel::after{content:"";flex:1;height:1px;background:rgba(255,255,255,.12)}
+  .pf-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:stretch;gap:0}
+  .pf-conn{display:flex;align-items:center;justify-content:center;color:var(--mint-accent);font-size:22px;padding:0 10px}
+  .pf-card{background:var(--cream);color:var(--teal);border-radius:16px;padding:18px;box-shadow:0 24px 50px -30px rgba(0,0,0,.6);display:flex;flex-direction:column}
+  .pf-ct{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .pf-ctt{font-family:var(--serif);font-weight:600;font-size:16px}
+  .pf-tag{font-size:10.5px;font-weight:600;letter-spacing:.03em;padding:4px 9px;border-radius:100px;background:rgba(30,55,60,.08);color:var(--teal);display:inline-flex;align-items:center;gap:5px}
+  .pf-tag .gh{width:6px;height:6px;border-radius:50%;background:var(--mint-accent)}
+  .pf-prow{display:flex;align-items:center;gap:10px;padding:8px 0}
+  .pf-av{width:30px;height:30px;border-radius:8px;background:var(--mint);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;color:var(--teal);flex-shrink:0}
+  .pf-nm{font-size:13px;font-weight:600;color:var(--teal);line-height:1.2}
+  .pf-sub{font-size:11.5px;color:var(--muted)}
+  .pf-pill{font-size:10.5px;font-weight:600;padding:4px 10px;border-radius:100px;white-space:nowrap}
+  .pf-pill.green{background:rgba(36,164,124,.16);color:#1c7a5c}
+  .pf-pill.yellow{background:rgba(251,213,0,.30);color:#8a7500}
+  .pf-pill.teal{background:rgba(30,55,60,.1);color:var(--teal)}
+  .pf-divi{height:1px;background:var(--border);margin:10px 0}
+  .pf-link{font-size:11.5px;color:var(--muted);margin-top:auto;padding-top:8px}
+  .pf-link b{color:#1c7a5c;font-weight:600}
+  .pf-task{display:flex;align-items:center;gap:9px;font-size:12.5px;color:var(--teal);padding:5px 0}
+  .pf-cbx{width:16px;height:16px;border-radius:5px;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .pf-cbx.on{background:var(--mint-accent);border-color:var(--mint-accent)}
+  .pf-cbx svg{width:9px;height:9px;stroke:#fff;fill:none;stroke-width:2.6}
+  .pf-task.done{color:var(--muted)}
+  .pf-doc{margin-top:8px;font-size:11px;color:var(--muted);border:1px dashed var(--border);border-radius:9px;padding:8px 10px;display:flex;align-items:center;gap:7px}
+  .pf-converge{width:100%;height:auto;display:block;margin:4px auto 2px}
+  .pf-foundation{margin-top:2px;background:linear-gradient(180deg,#173033,#102325);border:1px solid rgba(109,198,184,.28);border-radius:18px;padding:30px 32px;position:relative;overflow:hidden}
+  .pf-foundation::before{content:"";position:absolute;left:0;top:0;bottom:0;width:5px;background:var(--yellow)}
+  .pf-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(109,198,184,.14);color:var(--mint-accent);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:100px}
+  .pf-foundation h3{font-size:clamp(21px,2.5vw,30px);color:#fff;margin:14px 0 8px;font-weight:500}
+  .pf-fp{color:rgba(255,255,255,.66);font-size:15px;max-width:760px}
+  .pf-chips{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+  .pf-chip{font-size:12px;color:rgba(255,255,255,.82);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:7px 14px;display:inline-flex;align-items:center;gap:7px}
+  .pf-chip .d{width:6px;height:6px;border-radius:50%;background:var(--yellow)}
+  .pf-outrow{display:grid;grid-template-columns:1.55fr 1fr;gap:18px;margin-top:24px;align-items:start}
+  .pf-ocard{background:var(--cream);color:var(--teal);border-radius:16px;padding:18px;box-shadow:0 24px 50px -30px rgba(0,0,0,.6)}
+  .pf-octitle{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+  .pf-oi{width:30px;height:30px;border-radius:8px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .pf-oi svg{width:16px;height:16px;stroke:var(--teal);fill:none;stroke-width:1.8}
+  .pf-ott{font-family:var(--serif);font-weight:600;font-size:16px}
+  .pf-prompt{display:flex;justify-content:flex-end;align-items:center;gap:8px;margin-bottom:16px}
+  .pf-pbub{background:var(--teal);color:#fff;font-size:12.5px;font-weight:500;padding:9px 14px;border-radius:14px 14px 4px 14px}
+  .pf-pav{width:26px;height:26px;border-radius:50%;background:var(--mint);color:var(--teal);font-weight:700;font-size:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .pf-rephead{display:flex;align-items:center;gap:11px;margin-bottom:16px}
+  .pf-rsub{font-size:11.5px;color:var(--muted)}
+  .pf-repbody{display:flex;align-items:center;gap:22px}
+  .pf-donut{position:relative;flex-shrink:0;width:132px;height:132px}
+  .pf-donut svg{width:132px;height:132px}
+  .pf-dcenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+  .pf-dcenter .dl{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+  .pf-dcenter .dv{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--teal);line-height:1.1}
+  .pf-legend{flex:1;min-width:0}
+  .pf-lrow{display:grid;grid-template-columns:12px 1fr auto 40px;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--border);font-size:12.5px}
+  .pf-lrow:first-child{border-top:none}
+  .pf-sw{width:11px;height:11px;border-radius:3px}
+  .pf-lname{color:var(--teal);font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .pf-lamt{color:var(--teal);font-weight:600;text-align:right}
+  .pf-lpct{color:var(--muted);text-align:right;font-size:12px}
+  .pf-repcap{margin-top:15px;padding-top:13px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);font-style:italic;line-height:1.5}
+  .pf-dtitle{font-size:13.5px;font-weight:600;color:var(--teal);line-height:1.4}
+  .pf-dmeta{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .pf-affect{margin-top:12px;font-size:11px;font-weight:600;color:#8a7500;background:rgba(251,213,0,.24);display:inline-block;padding:5px 11px;border-radius:100px}
+
+  @media(max-width:960px){
+    .gm-grid{grid-template-columns:1fr;gap:40px}
+    .gm-globe svg{max-width:340px}
+  }
+  @media(max-width:860px){
+    .pil-grid{grid-template-columns:1fr}
+    .pf-flow{grid-template-columns:1fr}
+    .pf-conn{transform:rotate(90deg);padding:8px 0}
+    .pf-outrow{grid-template-columns:1fr}
+  }
+  @media(max-width:520px){
+    .pf-repbody{flex-direction:column;align-items:stretch;gap:16px}
+    .pf-donut{align-self:center}
+  }
+
+  /* ===== CONTACT MODAL ===== */
+  .cm-overlay{position:fixed;inset:0;z-index:200;background:rgba(15,28,30,.55);display:none;align-items:flex-start;justify-content:center;padding:24px;overflow-y:auto}
+  .cm-overlay.open{display:flex}
+  .cm-card{background:#fff;border-radius:20px;width:100%;max-width:560px;padding:40px 44px 36px;position:relative;margin:auto;box-shadow:0 30px 80px -30px rgba(0,0,0,.45);animation:cmIn .25s ease}
+  @keyframes cmIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  .cm-close{position:absolute;top:30px;right:30px;background:none;border:none;cursor:pointer;color:var(--teal);padding:6px;line-height:0}
+  .cm-close svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none}
+  .cm-eyebrow{font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:.02em;margin-bottom:10px}
+  .cm-title{font-family:var(--serif);font-size:clamp(26px,3vw,32px);font-weight:500;color:var(--teal);line-height:1.15;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:7px;margin-bottom:18px}
+  .cm-desc{font-size:13.5px;color:var(--teal);line-height:1.6;margin-bottom:26px;max-width:44ch}
+  .cm-choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  .cm-choice{border:1px solid var(--border);border-radius:14px;padding:24px 20px;background:#fff;cursor:pointer;text-align:left;font-family:var(--sans);transition:border-color .2s, background .2s}
+  .cm-choice:hover{border-color:var(--teal);background:var(--cream-2)}
+  .cm-choice .ct{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--teal);display:block;margin-bottom:6px}
+  .cm-choice .cd{font-size:13px;color:var(--muted);line-height:1.5}
+  .cm-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .cm-field{margin-bottom:16px}
+  .cm-field label{display:block;font-size:13px;font-weight:500;color:var(--teal);margin-bottom:6px}
+  .cm-field label .req{color:#C8442C;margin-left:2px}
+  .cm-field input,.cm-field select{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--teal);background:#fff;border:1px solid #D0D5DD;border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s, box-shadow .2s;-webkit-appearance:none;appearance:none}
+  .cm-field input::placeholder{color:#9CA3AF}
+  .cm-field select:invalid{color:#9CA3AF}
+  .cm-field input:focus,.cm-field select:focus{border-color:#A7DDD4;box-shadow:0 0 0 4px rgba(109,198,184,.24)}
+  .cm-select{position:relative}
+  .cm-select::after{content:"";position:absolute;right:13px;top:50%;width:7px;height:7px;border-right:1.6px solid var(--muted);border-bottom:1.6px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+  .cm-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:8px}
+  .cm-submit{background:var(--yellow);color:var(--teal);font-family:var(--sans);font-size:13px;font-weight:600;border:none;border-radius:7px;padding:9px 18px;cursor:pointer;transition:background .2s}
+  .cm-submit:hover{background:#ffe23d}
+  .cm-cancel{background:#fff;color:var(--teal);font-family:var(--sans);font-size:13px;font-weight:600;border:1px solid #D0D5DD;border-radius:7px;padding:9px 16px;cursor:pointer;transition:background .2s}
+  .cm-cancel:hover{background:var(--cream-2)}
+  .cm-back{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--muted);padding:0;margin-bottom:14px}
+  .cm-back:hover{color:var(--teal)}
+  .cm-thanks{text-align:center;padding:28px 0 18px}
+  .cm-thanks .ct{font-family:var(--serif);font-size:26px;color:var(--teal);margin-bottom:10px}
+  .cm-thanks p{font-size:14px;color:var(--muted);max-width:38ch;margin:0 auto}
+  @media(max-width:560px){
+    .cm-card{padding:30px 24px}
+    .cm-choices,.cm-grid2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="#" class="logo" aria-label="Casium home">
+      <img class="logo-img" src="Full Color - On Dark.png" alt="Casium">
+    </a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger" type="button">Who we serve <span class="chev"></span></button>
+        <div class="dropdown">
+          <div class="dd-single">
+            <a class="dd-link" href="business.html"><span class="t">For organizations</span><span class="d">Global mobility for teams of any size</span></a>
+            <a class="dd-link" href="individuals.html"><span class="t">For individuals</span><span class="d">File your visa with licensed attorneys</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-trigger" type="button">Resources <span class="chev"></span></button>
+        <div class="dropdown">
+          <div class="dd-single">
+            <a class="dd-link" href="resources/news.html"><span class="t">Immigration News</span><span class="d">Policy changes and processing updates</span></a>
+            <a class="dd-link" href="resources/visa-library.html"><span class="t">Visa Library</span><span class="d">Browse every visa type, one page each</span></a>
+            <a class="dd-link" href="resources/insights.html"><span class="t">Insights</span><span class="d">Analysis and tips from our immigration team</span></a>
+          </div>
+        </div>
+      </div>
+      <a href="about.html">Company</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#" class="nav-login">Login</a>
+      <a href="#" class="nav-cta" data-contact>Get in touch</a>
+      <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobmenu">
+  <a href="business.html">For organizations</a>
+  <a href="individuals.html">For individuals</a>
+  <a href="resources/news.html">Immigration News</a>
+  <a href="resources/visa-library.html">Visa Library</a>
+  <a href="resources/insights.html">Insights</a>
+  <a href="about.html">Company</a>
+  <a href="#" >Login</a>
+  <a href="#" class="btn btn-primary" data-contact>Get in touch</a>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?w=2400&q=80&auto=format&fit=crop" alt="City skyline at dusk">
+  </div>
+  <div class="hero-inner">
+    <h1>The modern immigration partner for <span class="acc"><span style="font-style:normal">global teams</span></span>.</h1>
+    <p class="sub">The alternative to the traditional law firm. Licensed attorneys file your visas, and one platform shows you exactly where every case stands. We do all of this across 90 countries.</p>
+    <div class="hero-ctas">
+      <a href="#" class="btn btn-primary" data-contact>Get in touch</a>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>Scroll</span><span class="line"></span></div>
+</section>
+
+<!-- ===== TRUSTED BY ===== -->
+<section class="trusted">
+  <div class="wrap">
+    <p class="label">Trusted by fast-growing teams</p>
+    <div class="logo-row">
+      <span>symbl.ai</span>
+      <span>Caddi</span>
+      <span>Ethosphere</span>
+      <span>Roboto</span>
+      <span>Orca&nbsp;DB</span>
+    </div>
+    <div class="press-row">
+      <span class="pl">As seen in</span>
+      <span class="pn">Fortune</span>
+      <span class="pn">The Seattle Times</span>
+      <span class="pn">Business Insider</span>
+      <span class="pn">TechCrunch</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GLOBAL MOBILITY ===== -->
+<section class="sec gm" id="global">
+  <div class="wrap gm-grid">
+    <div class="reveal">
+      <span class="eyebrow">Global mobility</span>
+      <h2>Your strategic immigration partner across <span class="acc" style="font-style:normal">90 countries</span>.</h2>
+      <p class="gm-body">A dedicated team, assigned to you from day one and working across every border. One partner, one system, an extension of your team in every market you enter.</p>
+      <div class="gm-chips">
+        <span class="gm-chip"><span class="d"></span>Inbound &amp; outbound</span>
+        <span class="gm-chip"><span class="d"></span>One dedicated team</span>
+        <span class="gm-chip"><span class="d"></span>Zero handoffs</span>
+      </div>
+    </div>
+    <div class="gm-globe reveal" style="transition-delay:.1s">
+      <div class="gm-globe-wrap">
+        <img class="gm-globe-img" src="ChatGPT Image Jul 3, 2026, 11_07_45 AM.png" alt="Global network of immigration routes across a wireframe globe">
+        <span class="gm-hub" style="left:52.5%;top:52%"></span>
+        <span class="gm-hub gm-hub2" style="left:66.5%;top:35%"></span>
+        <span class="gm-hub gm-hub3" style="left:28.5%;top:32.5%"></span>
+        <span class="gm-hub gm-hub4" style="left:53%;top:74%"></span>
+        <span class="gm-hub gm-hub5" style="left:26.5%;top:57%"></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TWO PILLARS ===== -->
+<section class="sec pil">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">High-tech, high-touch</span>
+      <h2 class="big">Expert attorneys, <span class="hl">intelligent</span> software.</h2>
+    </div>
+    <div class="pil-grid">
+      <div class="pil-card reveal">
+        <div class="pil-img">
+          <img class="pil-photo" src="Rectangle 23-9e6d8cba.png" alt="Casium legal team collaborating">
+        </div>
+        <h3>Best-in-Class Legal Experts</h3>
+        <p>You get a dedicated attorney and a dedicated case team, assigned to your account and accountable for every filing from first assessment to final approval.</p>
+      </div>
+      <div class="pil-card reveal" style="transition-delay:.08s">
+        <div class="pil-img">
+          <img class="pil-photo" src="platform-experience.png" alt="Casium immigration program dashboard">
+        </div>
+        <h3>AI-Native Technology Platform</h3>
+        <p>We replace the spreadsheets, the back-and-forth between employees and legal, and the scattered email threads with one intelligent platform. And you get peace of mind, and your employees get an elevated experience.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLATFORM ===== -->
+<section class="sec pf" id="platform">
+  <div class="wrap">
+    <div class="pf-head reveal">
+      <span class="eyebrow">The platform</span>
+      <h2 class="big">One source of <span class="acc" style="color:#FFFFFF;font-style:normal">truth</span>,<br>with intelligence underneath.</h2>
+      <p class="pf-lead">Assessments, filings, and compliance run in one system — every request, document, and status in a single place. Beneath it all, an intelligence layer turns that data into answers.</p>
+    </div>
+
+    <div class="pf-stage reveal">
+      <div class="pf-rowlabel">The workflow</div>
+      <div class="pf-flow">
+        <div class="pf-card">
+          <div class="pf-ct"><span class="pf-ctt">Assess</span><span class="pf-tag"><span class="gh"></span>New request</span></div>
+          <div class="pf-prow"><span class="pf-av">SR</span><div><div class="pf-nm">Sofia Reyes</div><div class="pf-sub">H-1B extension</div></div></div>
+          <span class="pf-pill green" style="align-self:flex-start">Green light — clear to file</span>
+          <div class="pf-link">Ambiguous case? <b>Talk to an attorney</b></div>
+        </div>
+        <div class="pf-conn">→</div>
+        <div class="pf-card">
+          <div class="pf-ct"><span class="pf-ctt">File</span><span class="pf-pill teal">Day 6 of 16</span></div>
+          <div class="pf-task done"><span class="pf-cbx on"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Passport &amp; I-94</div>
+          <div class="pf-task done"><span class="pf-cbx on"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>Degree certificate</div>
+          <div class="pf-task"><span class="pf-cbx"></span>Support letter</div>
+          <div class="pf-doc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"/></svg>Upload document</div>
+        </div>
+        <div class="pf-conn">→</div>
+        <div class="pf-card">
+          <div class="pf-ct"><span class="pf-ctt">Comply</span><span class="pf-tag">24 people</span></div>
+          <div class="pf-prow"><span class="pf-av">AP</span><div><div class="pf-nm">Amish Patel</div><div class="pf-sub">H-1B · exp. 2027</div></div><span class="pf-pill green" style="margin-left:auto">On track</span></div>
+          <div class="pf-divi"></div>
+          <div class="pf-prow"><span class="pf-av">KT</span><div><div class="pf-nm">Kenji Tanaka</div><div class="pf-sub">O-1 · 58 days left</div></div><span class="pf-pill yellow" style="margin-left:auto">Renew soon</span></div>
+        </div>
+      </div>
+
+      <svg class="pf-converge" viewBox="0 0 1160 96" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <line x1="186" y1="10" x2="186" y2="46" stroke="rgba(109,198,184,0.45)" stroke-width="1.5"/>
+        <line x1="580" y1="10" x2="580" y2="46" stroke="rgba(109,198,184,0.45)" stroke-width="1.5"/>
+        <line x1="974" y1="10" x2="974" y2="46" stroke="rgba(109,198,184,0.45)" stroke-width="1.5"/>
+        <path d="M186 46 H974" stroke="rgba(109,198,184,0.25)" stroke-width="1.5"/>
+        <circle cx="186" cy="46" r="3" fill="#6DC6B8"/>
+        <circle cx="580" cy="46" r="3" fill="#6DC6B8"/>
+        <circle cx="974" cy="46" r="3" fill="#6DC6B8"/>
+        <line x1="580" y1="46" x2="580" y2="86" stroke="rgba(109,198,184,0.45)" stroke-width="1.5"/>
+        <circle cx="580" cy="86" r="4" fill="none" stroke="#6DC6B8" stroke-width="1.5"/>
+      </svg>
+
+      <div class="pf-foundation">
+        <span class="pf-badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/></svg>The intelligence layer</span>
+        <h3>Your single source of truth.</h3>
+        <p class="pf-fp">Every assessment, filing, and document flows into one connected record, with an intelligence layer running underneath it that powers the outputs your team actually needs.</p>
+        <div class="pf-chips"><span class="pf-chip"><span class="d"></span>Personalization at scale</span><span class="pf-chip"><span class="d"></span>No spreadsheets, no email threads</span><span class="pf-chip"><span class="d"></span>Always up to date</span></div>
+
+        <div class="pf-outrow">
+          <div class="pf-ocard">
+            <div class="pf-prompt"><span class="pf-pbub">View my spend split by division</span><span class="pf-pav">DL</span></div>
+            <div class="pf-rephead">
+              <span class="pf-oi"><svg viewBox="0 0 24 24"><path d="M4 19V5M4 19h16M8 15l3-4 3 2 4-6"/></svg></span>
+              <div><div class="pf-ott">Mobility spend by division</div><div class="pf-rsub">YTD 2026 · 5 divisions</div></div>
+            </div>
+            <div class="pf-repbody">
+              <div class="pf-donut">
+                <svg viewBox="0 0 120 120">
+                  <g transform="rotate(-90 60 60)" fill="none" stroke-width="16">
+                    <circle cx="60" cy="60" r="42" stroke="#0F6E56" stroke-dasharray="139.63 124.26" stroke-dashoffset="0"/>
+                    <circle cx="60" cy="60" r="42" stroke="#1D9E75" stroke-dasharray="48.91 214.98" stroke-dashoffset="-139.63"/>
+                    <circle cx="60" cy="60" r="42" stroke="#5DCAA5" stroke-dasharray="38.38 225.51" stroke-dashoffset="-188.54"/>
+                    <circle cx="60" cy="60" r="42" stroke="#2C4A50" stroke-dasharray="22.39 241.50" stroke-dashoffset="-226.92"/>
+                    <circle cx="60" cy="60" r="42" stroke="#9FE1CB" stroke-dasharray="14.59 249.30" stroke-dashoffset="-249.31"/>
+                  </g>
+                </svg>
+                <div class="pf-dcenter"><span class="dl">Total</span><span class="dv">$1,157,400</span></div>
+              </div>
+              <div class="pf-legend">
+                <div class="pf-lrow"><span class="pf-sw" style="background:#0F6E56"></span><span class="pf-lname">Engineering</span><span class="pf-lamt">$612,400</span><span class="pf-lpct">53%</span></div>
+                <div class="pf-lrow"><span class="pf-sw" style="background:#1D9E75"></span><span class="pf-lname">Product</span><span class="pf-lamt">$214,500</span><span class="pf-lpct">19%</span></div>
+                <div class="pf-lrow"><span class="pf-sw" style="background:#5DCAA5"></span><span class="pf-lname">Research</span><span class="pf-lamt">$168,300</span><span class="pf-lpct">15%</span></div>
+                <div class="pf-lrow"><span class="pf-sw" style="background:#2C4A50"></span><span class="pf-lname">Go-to-market</span><span class="pf-lamt">$98,200</span><span class="pf-lpct">8%</span></div>
+                <div class="pf-lrow"><span class="pf-sw" style="background:#9FE1CB"></span><span class="pf-lname">Operations</span><span class="pf-lamt">$64,000</span><span class="pf-lpct">6%</span></div>
+              </div>
+            </div>
+            <div class="pf-repcap">Engineering drives 53% of spend, weighted by H-1B amendments and India-origin case volume.</div>
+          </div>
+
+          <div class="pf-ocard">
+            <div class="pf-octitle"><span class="pf-oi"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V7l8-4z"/></svg></span><span class="pf-ott">Policy Watch</span></div>
+            <div>
+              <div class="pf-dtitle">USCIS raises H-1B scrutiny for specialty roles</div>
+              <div class="pf-dmeta">Reviewed by Casium legal · Aug 14</div>
+              <span class="pf-affect">3 of your employees affected</span>
+            </div>
+            <div class="pf-divi" style="margin:16px 0"></div>
+            <div>
+              <div class="pf-dtitle">Visa Bulletin — EB-2 India retrogresses two months</div>
+              <div class="pf-dmeta">Reviewed by Casium legal · Aug 2</div>
+              <span class="pf-affect">5 of your employees affected</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATS ===== -->
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat reveal"><div class="num" data-count="99"><span class="cval">99</span><span class="u">%</span></div><div class="lbl">Approval rate</div></div>
+    <div class="stat reveal" style="transition-delay:.06s"><div class="num" data-count="30"><span class="cval">30</span><span class="u">+</span></div><div class="lbl">Companies supported</div></div>
+    <div class="stat reveal" style="transition-delay:.12s"><div class="num"><span class="cval" data-count="18">18</span></div><div class="lbl">Days average time to file</div></div>
+    <div class="stat reveal" style="transition-delay:.18s"><div class="num"><span class="cval" data-count="90">90</span></div><div class="lbl">Countries covered</div></div>
+  </div>
+</section>
+
+<!-- ===== PATHWAYS ===== -->
+<section class="sec pathways" id="pathways">
+  <div class="wrap">
+    <div class="sec-head center reveal">
+      <span class="eyebrow">Every pathway covered</span>
+      <h2 class="big">From H-1B to green card,<br><b>Casium does it all</b>.</h2>
+      <p class="lead">Whether your team needs an H-1B or your top engineer is ready for an EB-1A, we handle every visa type — no referrals, no handoffs.</p>
+    </div>
+    <div class="path-cols">
+      <div class="path-card reveal">
+        <h3>Temporary work visas</h3>
+        <p class="pcsub">Get talent working, fast.</p>
+        <div class="visa"><span class="code">O-1</span><span class="vd">For individuals with extraordinary ability.</span></div>
+        <div class="visa"><span class="code">H-1B</span><span class="vd">For specialized professional roles.</span></div>
+        <div class="visa"><span class="code">L-1</span><span class="vd">For transfers within a multinational company.</span></div>
+        <div class="visa"><span class="code">TN</span><span class="vd">For Canadian and Mexican nationals under USMCA.</span></div>
+      </div>
+      <div class="path-card gc reveal" style="transition-delay:.08s">
+        <h3>Employment-based green cards</h3>
+        <p class="pcsub">A clear road to permanent residency.</p>
+        <div class="visa"><span class="code">EB-1A</span><span class="vd">For individuals with extraordinary ability.</span></div>
+        <div class="visa"><span class="code">EB-1B</span><span class="vd">For outstanding professors and researchers.</span></div>
+        <div class="visa"><span class="code">EB-1C</span><span class="vd">For multinational executives and managers.</span></div>
+        <div class="visa"><span class="code">EB-2 NIW</span><span class="vd">National interest waiver for exceptional talent.</span></div>
+        <div class="visa"><span class="code">EB-2 PERM</span><span class="vd">Employer-sponsored permanent residency.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#" class="logo" aria-label="Casium home">
+          <img class="logo-img" src="Full Color - On Dark.png" alt="Casium">
+        </a>
+        <p>The modern standard for business immigration — a licensed law firm, technology platform, and service partner in one.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Temporary visas</h5>
+        <a href="#">O-1</a><a href="#">H-1B</a><a href="#">L-1</a><a href="#">TN</a>
+      </div>
+      <div class="foot-col">
+        <h5>Green cards</h5>
+        <a href="#">EB-1A</a><a href="#">EB-1B</a><a href="#">EB-1C</a><a href="#">EB-2 NIW</a><a href="#">EB-2 PERM</a>
+      </div>
+      <div class="foot-col">
+        <h5>Services</h5>
+        <a href="business.html">For businesses</a><a href="#">For individuals</a><a href="#">The platform</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="#">Our story</a><a href="#">Careers</a><a href="#">Resources</a><a href="#">Contact us</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© Casium, Inc. 2026. All rights reserved.</p>
+      <div class="fb-links">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Policy Updates</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== CONTACT MODAL ===== -->
+<div class="cm-overlay" id="cmOverlay" role="dialog" aria-modal="true" aria-label="Get in touch">
+  <div class="cm-card">
+    <button class="cm-close" id="cmClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+
+    <!-- step 1: choose -->
+    <div class="cm-step" id="cmStepChoose">
+      <div class="cm-eyebrow">Get in touch</div>
+      <h3 class="cm-title" style="text-decoration:none">How can we help?</h3>
+      <p class="cm-desc">Tell us who you are and we'll point you to the right place.</p>
+      <div class="cm-choices">
+        <button class="cm-choice" data-step="business">
+          <span class="ct">For organizations</span>
+          <span class="cd">Sponsor visas and manage immigration for your team.</span>
+        </button>
+        <button class="cm-choice" data-step="individual">
+          <span class="ct">For individuals</span>
+          <span class="cd">Explore your own visa options and pathways.</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- step 2a: business -->
+    <div class="cm-step" id="cmStepBusiness" hidden>
+      <button class="cm-back" data-back>← Back</button>
+      <div class="cm-eyebrow">Casium for Business</div>
+      <h3 class="cm-title">Request a Demo</h3>
+      <p class="cm-desc">We'll walk you through the capabilities of our platform and show you how Casium can transform your organization's immigration processes, from first filing to full compliance.</p>
+      <form data-form>
+        <div class="cm-grid2">
+          <div class="cm-field"><label>First Name<span class="req">*</span></label><input type="text" required></div>
+          <div class="cm-field"><label>Last Name<span class="req">*</span></label><input type="text" required></div>
+        </div>
+        <div class="cm-field"><label>Work email<span class="req">*</span></label><input type="email" required></div>
+        <div class="cm-grid2">
+          <div class="cm-field"><label>Company Name<span class="req">*</span></label><input type="text" required></div>
+          <div class="cm-field"><label>Job Title<span class="req">*</span></label><input type="text" required></div>
+        </div>
+        <div class="cm-field"><label>How did you learn about Casium?<span class="req">*</span></label><input type="text" required></div>
+        <div class="cm-actions">
+          <button type="submit" class="cm-submit">Submit</button>
+          <button type="button" class="cm-cancel" data-cancel>Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- step 2b: individual -->
+    <div class="cm-step" id="cmStepIndividual" hidden>
+      <button class="cm-back" data-back>← Back</button>
+      <div class="cm-eyebrow">Casium for Individuals</div>
+      <h3 class="cm-title">Get your profile assessment</h3>
+      <p class="cm-desc">Fill in the details below and we'll identify the strongest visa pathways available to you based on your claims, achievements, and background.</p>
+      <form data-form>
+        <div class="cm-field"><label>Full Name<span class="req">*</span></label><input type="text" required></div>
+        <div class="cm-field"><label>LinkedIn profile URL<span class="req">*</span></label><input type="url" required></div>
+        <div class="cm-field"><label>Email address<span class="req">*</span></label><input type="email" required></div>
+        <div class="cm-field"><label>Which visa options would you like to explore?<span class="req">*</span></label>
+          <div class="cm-select"><select required><option value="" disabled selected>Select all relevant visa type(s)</option><option>O-1</option><option>H-1B</option><option>L-1</option><option>TN</option><option>EB-1A</option><option>EB-1B</option><option>EB-1C</option><option>EB-2 NIW</option><option>EB-2 PERM</option><option>Not sure yet</option></select></div>
+        </div>
+        <div class="cm-field"><label>How did you learn about Casium?<span class="req">*</span></label><input type="text" required></div>
+        <div class="cm-field"><label>Invite Code (If any…)</label><input type="text"></div>
+        <div class="cm-actions">
+          <button type="submit" class="cm-submit">Submit</button>
+          <button type="button" class="cm-cancel" data-cancel>Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- step 3: thanks -->
+    <div class="cm-step" id="cmStepThanks" hidden>
+      <div class="cm-thanks">
+        <div class="ct">Thank you.</div>
+        <p>We've received your details and will be in touch shortly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // sticky header state
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+
+  // mobile menu
+  const ham = document.getElementById('ham');
+  const menu = document.getElementById('mobmenu');
+  ham.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // reveal on scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.14});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // count-up for stats
+  const animateCount = (host) => {
+    const target = +host.dataset.count;
+    const out = host.classList.contains('cval') ? host : host.querySelector('.cval');
+    if(!out) return;
+    const dur = 1400; const start = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now-start)/dur, 1);
+      const eased = 1 - Math.pow(1-p, 3);
+      out.textContent = Math.round(eased*target);
+      if(p<1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const countIO = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ animateCount(e.target); countIO.unobserve(e.target); } });
+  }, {threshold:0.5});
+  document.querySelectorAll('[data-count]').forEach(el => countIO.observe(el));
+
+  // contact modal
+  const cmOverlay = document.getElementById('cmOverlay');
+  const cmSteps = {
+    choose: document.getElementById('cmStepChoose'),
+    business: document.getElementById('cmStepBusiness'),
+    individual: document.getElementById('cmStepIndividual'),
+    thanks: document.getElementById('cmStepThanks')
+  };
+  const cmShow = (name) => {
+    Object.values(cmSteps).forEach(s => s.hidden = true);
+    cmSteps[name].hidden = false;
+  };
+  const cmOpen = () => { cmShow('choose'); cmOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
+  const cmCloseFn = () => { cmOverlay.classList.remove('open'); document.body.style.overflow = ''; };
+  document.querySelectorAll('[data-contact]').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); cmOpen(); }));
+  document.getElementById('cmClose').addEventListener('click', cmCloseFn);
+  cmOverlay.addEventListener('click', (e) => { if(e.target === cmOverlay) cmCloseFn(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && cmOverlay.classList.contains('open')) cmCloseFn(); });
+  cmOverlay.querySelectorAll('.cm-choice').forEach(b => b.addEventListener('click', () => cmShow(b.dataset.step)));
+  cmOverlay.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => cmShow('choose')));
+  cmOverlay.querySelectorAll('[data-cancel]').forEach(b => b.addEventListener('click', cmCloseFn));
+  cmOverlay.querySelectorAll('[data-form]').forEach(f => f.addEventListener('submit', (e) => {
+    e.preventDefault(); cmShow('thanks'); setTimeout(cmCloseFn, 2200); f.reset();
+  }));
+</script>
+</body>
+</html>
