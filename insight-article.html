@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Foundations of a Strong O-1, EB-1, or EB-2 NIW Petition | Casium Insights</title>
+<meta name="description" content="Most petitions are won or lost on clarity, not credentials. Nine principles that separate approved petitions from requests for evidence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+<style>
+  @font-face{
+    font-family:'Signifier';
+    src:url('../fonts/signifier-regular.woff2') format('woff2'),
+        url('../fonts/signifier-regular.otf') format('opentype');
+    font-weight:400;font-style:normal;font-display:swap;
+  }
+  :root{
+    --cream:#F6F2E8;--cream-2:#FBF9F2;--mint:#E8EFEC;--teal:#1E373C;--teal-2:#132729;
+    --teal-soft:#2C4A50;--yellow:#FBD500;--mint-accent:#6DC6B8;--muted:#5C6F72;
+    --muted-light:#9DB0B2;--border:#D6DCDA;--ink:#1E373C;
+    --serif:'Signifier', ui-serif, Georgia, 'Times New Roman', serif;
+    --sans:'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--teal);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3,h4{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-0.015em;color:var(--teal)}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+  .eyebrow{font-family:var(--sans);font-size:12px;font-weight:600;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);display:inline-block}
+
+  /* buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--sans);font-weight:600;font-size:15px;padding:14px 26px;border-radius:100px;transition:all .25s ease;cursor:pointer;border:1px solid transparent}
+  .btn-primary{background:var(--yellow);color:var(--teal)}
+  .btn-primary:hover{background:#ffe23d;transform:translateY(-2px);box-shadow:0 12px 28px -10px rgba(251,213,0,.55)}
+  .btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.35)}
+  .btn-ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.6)}
+  .btn .arw{transition:transform .25s ease}
+  .btn:hover .arw{transform:translateX(3px)}
+
+  /* ===== NAV ===== */
+  header{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .35s ease, box-shadow .35s ease, padding .35s ease;padding:22px 0}
+  header.scrolled{background:rgba(19,39,41,.92);backdrop-filter:blur(12px);box-shadow:0 1px 0 rgba(0,0,0,.2);padding:14px 0}
+  .nav{display:flex;align-items:center;justify-content:space-between}
+  .logo .logo-img{height:34px;width:auto;display:block}
+  .nav-links{display:flex;align-items:center;gap:34px}
+  .nav-item{position:relative;display:flex;align-items:center}
+  .nav-links a,.nav-trigger{font-size:15px;font-weight:450;color:rgba(255,255,255,.9);transition:color .2s;position:relative}
+  .nav-links a:hover,.nav-trigger:hover{color:#fff}
+  .nav-trigger{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:var(--sans);padding:0}
+  .nav-trigger.active{color:#fff}
+  .nav-trigger .chev{width:9px;height:9px;border-right:1.6px solid currentColor;border-bottom:1.6px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .25s ease;opacity:.75}
+  .nav-item:hover .nav-trigger .chev{transform:rotate(225deg) translateY(-1px)}
+  .dropdown{position:absolute;top:calc(100% + 18px);left:50%;transform:translateX(-50%) translateY(8px);background:var(--cream-2);border:1px solid var(--border);border-radius:18px;box-shadow:0 24px 60px -24px rgba(15,34,38,.35),0 2px 8px rgba(15,34,38,.06);padding:12px;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .22s ease, transform .22s ease;z-index:120}
+  .nav-item:hover .dropdown{opacity:1;visibility:visible;pointer-events:auto;transform:translateX(-50%) translateY(0)}
+  .dropdown::before{content:"";position:absolute;top:-18px;left:0;right:0;height:18px}
+  .dd-single{width:262px;display:flex;flex-direction:column}
+  .dd-link{display:flex;flex-direction:column;gap:2px;padding:11px 14px;border-radius:12px;transition:background .18s ease}
+  .dd-link:hover{background:var(--mint)}
+  .dd-link.current{background:var(--mint)}
+  .dd-link .t{font-size:14.5px;font-weight:550;color:var(--teal)!important}
+  .dd-link .d{font-size:12.5px;font-weight:400;color:var(--muted)!important;line-height:1.45}
+  .nav-right{display:flex;align-items:center;gap:14px}
+  .nav-login{font-size:15px;font-weight:500;color:#fff}
+  .nav-cta{background:var(--yellow);color:var(--teal);padding:11px 22px;border-radius:100px;font-size:14px;font-weight:600;transition:all .25s}
+  .nav-cta:hover{background:#ffe23d;transform:translateY(-1px)}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+  .hamburger span{width:24px;height:2px;background:#fff;transition:.3s}
+  .mobile-menu{display:none}
+
+  /* ===== ARTICLE HEAD ===== */
+  .art-head{background:linear-gradient(180deg,#0f2226 0%, #16302f 100%);color:#fff;padding:156px 0 60px;position:relative;overflow:hidden}
+  .art-head::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 120% at 82% 0%, rgba(109,198,184,.12) 0%, transparent 55%);pointer-events:none}
+  .art-head-inner{position:relative;z-index:2;max-width:820px}
+  .back{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:rgba(255,255,255,.68);margin-bottom:28px;transition:color .2s}
+  .back:hover{color:#fff}
+  .acat{display:inline-block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;border-radius:100px;background:rgba(251,213,0,.24);color:#f4d64d}
+  .art-head h1{font-size:clamp(32px,4.6vw,58px);color:#fff;font-weight:400;letter-spacing:-.02em;line-height:1.05;margin:20px 0 20px}
+  .art-dek{font-size:clamp(17px,1.6vw,20px);color:rgba(255,255,255,.8);line-height:1.55;max-width:62ch}
+  .byline{display:flex;align-items:center;gap:14px;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.14)}
+  .by-av{width:46px;height:46px;border-radius:13px;background:var(--mint-accent);color:#0f2226;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;flex-shrink:0}
+  .by-name{font-size:15px;font-weight:600;color:#fff}
+  .by-meta{font-size:13px;color:rgba(255,255,255,.62);display:flex;align-items:center;gap:9px;margin-top:2px}
+  .by-meta .dot{width:3px;height:3px;border-radius:50%;background:rgba(255,255,255,.4)}
+
+  /* ===== BODY LAYOUT ===== */
+  .d-body{padding:56px 0 24px}
+  .d-layout{display:grid;grid-template-columns:216px 1fr;gap:60px;align-items:start}
+  .toc{position:sticky;top:96px}
+  .toc-label{font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-light);margin-bottom:14px}
+  .toc a{display:block;font-size:13.5px;color:var(--muted);padding:8px 0 8px 16px;border-left:2px solid var(--border);transition:color .18s, border-color .18s;line-height:1.4}
+  .toc a:hover{color:var(--teal)}
+  .toc a.active{color:var(--teal);border-color:var(--teal);font-weight:600}
+  .toc-cta{margin-top:22px;padding-top:22px;border-top:1px solid var(--border)}
+  .toc-cta p{font-size:12.5px;color:var(--muted);line-height:1.5;margin-bottom:12px}
+  .toc-cta .btn{width:100%;justify-content:center;font-size:13.5px;padding:12px 16px}
+
+  .content{max-width:720px;font-size:17.5px;line-height:1.78;color:#324a4d}
+  .content section{scroll-margin-top:110px}
+  .content p{margin-bottom:22px}
+  .content .lede{font-size:20px;line-height:1.65;color:var(--teal)}
+  .content h2{font-family:var(--serif);font-size:clamp(23px,2.6vw,30px);font-weight:600;line-height:1.15;color:var(--teal);margin:40px 0 16px;letter-spacing:-.01em}
+  .content section:first-child h2{margin-top:0}
+  .content h2 .num{color:var(--mint-accent);margin-right:12px}
+  .content strong{color:var(--teal);font-weight:600}
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s cubic-bezier(.16,1,.3,1), transform .7s cubic-bezier(.16,1,.3,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  .pullquote{margin:42px 0;padding:6px 0 6px 30px;border-left:3px solid var(--yellow)}
+  .pullquote p{font-family:var(--serif);font-size:clamp(22px,2.6vw,29px);line-height:1.34;color:var(--teal);margin:0;letter-spacing:-.01em}
+
+  .example{background:var(--mint);border-radius:16px;padding:22px 26px;margin:30px 0}
+  .example .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#2c6b62;font-weight:700;margin-bottom:9px}
+  .example p{font-family:var(--serif);font-size:18px;line-height:1.55;color:var(--teal);margin:0;font-style:italic}
+
+  .callout{background:var(--cream-2);border:1px solid var(--border);border-radius:18px;padding:24px 28px;margin:34px 0}
+  .callout .cl-h{display:flex;align-items:center;gap:10px;font-family:var(--sans);font-size:15px;font-weight:700;color:var(--teal);margin-bottom:10px}
+  .callout .cl-h svg{width:19px;height:19px;stroke:var(--mint-accent);fill:none;stroke-width:2;flex-shrink:0}
+  .callout p{font-size:15.5px;line-height:1.65;color:var(--muted);margin:0}
+
+  /* ===== AUTHOR ===== */
+  .author{margin-top:44px}
+  .author-card{display:flex;gap:18px;background:var(--cream-2);border:1px solid var(--border);border-radius:20px;padding:26px 28px}
+  .author-card .a-av{width:56px;height:56px;border-radius:15px;background:var(--teal);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:18px;flex-shrink:0}
+  .author-card .a-name{font-size:16px;font-weight:600;color:var(--teal)}
+  .author-card .a-role{font-size:13px;color:var(--muted);margin-bottom:8px}
+  .author-card .a-bio{font-size:14px;color:var(--muted);line-height:1.6}
+
+  /* ===== CTA ===== */
+  .cta{background:var(--teal);color:#fff;padding:clamp(52px,6vw,80px) 0}
+  .cta-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+  .cta h2{color:#fff;font-size:clamp(26px,3.2vw,40px);font-weight:400;max-width:20ch}
+  .cta p{color:rgba(255,255,255,.72);font-size:16px;margin-top:14px;max-width:46ch}
+  .cta-actions{display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ===== RELATED ===== */
+  .related{background:var(--cream-2);padding:72px 0}
+  .related h4{font-family:var(--serif);font-size:26px;font-weight:500;margin-bottom:28px}
+  .rel-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .acard{position:relative;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:20px;padding:26px 26px 22px;transition:transform .28s cubic-bezier(.16,1,.3,1), box-shadow .28s ease, border-color .28s ease;cursor:pointer}
+  .acard:hover{transform:translateY(-4px);box-shadow:0 26px 50px -30px rgba(15,34,38,.4);border-color:#C3D0CC}
+  .acard .rcat{align-self:flex-start;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:6px 11px;border-radius:100px;margin-bottom:14px}
+  .rcat.guides{background:rgba(109,198,184,.18);color:#2f6b62}
+  .rcat.petitions{background:rgba(251,213,0,.30);color:#846c00}
+  .rcat.founders{background:rgba(124,92,196,.14);color:#6a4bb0}
+  .acard .rtitle{font-family:var(--serif);font-size:20px;font-weight:600;line-height:1.16;color:var(--teal);margin-bottom:10px}
+  .acard .rmeta{font-size:12.5px;color:var(--muted);margin-top:auto;padding-top:14px}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--teal-2);color:#fff;padding:80px 0 40px}
+  .foot-top{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:56px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .foot-brand .logo .logo-img{height:36px}
+  .foot-brand p{color:rgba(255,255,255,.6);font-size:14.5px;margin-top:20px;max-width:280px;line-height:1.6}
+  .foot-col h5{font-family:var(--sans);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mint-accent);margin-bottom:18px;font-weight:600}
+  .foot-col a{display:block;color:rgba(255,255,255,.72);font-size:14.5px;padding:6px 0;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:30px;flex-wrap:wrap;gap:14px}
+  .foot-bottom p{color:rgba(255,255,255,.5);font-size:13.5px}
+  .foot-bottom .fb-links{display:flex;gap:24px}
+  .foot-bottom .fb-links a{color:rgba(255,255,255,.5);font-size:13.5px}
+  .foot-bottom .fb-links a:hover{color:#fff}
+
+  @media(max-width:960px){.foot-top{grid-template-columns:1fr 1fr}.foot-brand{grid-column:1/-1}.rel-grid{grid-template-columns:1fr}.d-layout{grid-template-columns:1fr;gap:0}.toc{display:none}.content{max-width:720px;margin:0 auto}}
+  @media(max-width:820px){
+    .nav-links,.nav-login{display:none}
+    .hamburger{display:flex}
+    .mobile-menu.open{display:flex;position:fixed;inset:0;z-index:99;background:var(--teal);padding:100px 32px 40px;flex-direction:column;gap:6px}
+    .mobile-menu a{color:#fff;font-family:var(--serif);font-size:28px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .mobile-menu .btn{margin-top:24px;justify-content:center}
+  }
+  @media(max-width:640px){.wrap{padding:0 20px}}
+
+  /* ===== CONTACT MODAL ===== */
+  .cm-overlay{position:fixed;inset:0;z-index:200;background:rgba(15,28,30,.55);display:none;align-items:flex-start;justify-content:center;padding:24px;overflow-y:auto}
+  .cm-overlay.open{display:flex}
+  .cm-card{background:#fff;border-radius:20px;width:100%;max-width:560px;padding:40px 44px 36px;position:relative;margin:auto;box-shadow:0 30px 80px -30px rgba(0,0,0,.45);animation:cmIn .25s ease}
+  @keyframes cmIn{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  .cm-close{position:absolute;top:30px;right:30px;background:none;border:none;cursor:pointer;color:var(--teal);padding:6px;line-height:0}
+  .cm-close svg{width:18px;height:18px;stroke:currentColor;stroke-width:2;fill:none}
+  .cm-eyebrow{font-size:12.5px;font-weight:500;color:var(--muted);letter-spacing:.02em;margin-bottom:10px}
+  .cm-title{font-family:var(--serif);font-size:clamp(26px,3vw,32px);font-weight:500;color:var(--teal);line-height:1.15;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:7px;margin-bottom:18px}
+  .cm-desc{font-size:13.5px;color:var(--teal);line-height:1.6;margin-bottom:26px;max-width:44ch}
+  .cm-choices{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:6px}
+  .cm-choice{border:1px solid var(--border);border-radius:14px;padding:24px 20px;background:#fff;cursor:pointer;text-align:left;font-family:var(--sans);transition:border-color .2s, background .2s}
+  .cm-choice:hover{border-color:var(--teal);background:var(--cream-2)}
+  .cm-choice .ct{font-family:var(--serif);font-size:19px;font-weight:500;color:var(--teal);display:block;margin-bottom:6px}
+  .cm-choice .cd{font-size:13px;color:var(--muted);line-height:1.5}
+  .cm-grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .cm-field{margin-bottom:16px}
+  .cm-field label{display:block;font-size:13px;font-weight:500;color:var(--teal);margin-bottom:6px}
+  .cm-field label .req{color:#C8442C;margin-left:2px}
+  .cm-field input,.cm-field select{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--teal);background:#fff;border:1px solid #D0D5DD;border-radius:8px;padding:10px 12px;outline:none;transition:border-color .2s, box-shadow .2s;-webkit-appearance:none;appearance:none}
+  .cm-field input::placeholder{color:#9CA3AF}
+  .cm-field select:invalid{color:#9CA3AF}
+  .cm-field input:focus,.cm-field select:focus{border-color:#A7DDD4;box-shadow:0 0 0 4px rgba(109,198,184,.24)}
+  .cm-select{position:relative}
+  .cm-select::after{content:"";position:absolute;right:13px;top:50%;width:7px;height:7px;border-right:1.6px solid var(--muted);border-bottom:1.6px solid var(--muted);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+  .cm-actions{display:flex;justify-content:flex-end;gap:10px;margin-top:8px}
+  .cm-submit{background:var(--yellow);color:var(--teal);font-family:var(--sans);font-size:13px;font-weight:600;border:none;border-radius:7px;padding:9px 18px;cursor:pointer;transition:background .2s}
+  .cm-submit:hover{background:#ffe23d}
+  .cm-cancel{background:#fff;color:var(--teal);font-family:var(--sans);font-size:13px;font-weight:600;border:1px solid #D0D5DD;border-radius:7px;padding:9px 16px;cursor:pointer;transition:background .2s}
+  .cm-cancel:hover{background:var(--cream-2)}
+  .cm-back{display:inline-flex;align-items:center;gap:6px;background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:12.5px;font-weight:600;color:var(--muted);padding:0;margin-bottom:14px}
+  .cm-back:hover{color:var(--teal)}
+  .cm-thanks{text-align:center;padding:28px 0 18px}
+  .cm-thanks .ct{font-family:var(--serif);font-size:26px;color:var(--teal);margin-bottom:10px}
+  .cm-thanks p{font-size:14px;color:var(--muted);max-width:38ch;margin:0 auto}
+  @media(max-width:560px){
+    .cm-card{padding:30px 24px}
+    .cm-choices,.cm-grid2{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header id="hdr">
+  <div class="wrap nav">
+    <a href="../casium-homepage.html" class="logo" aria-label="Casium home">
+      <img class="logo-img" src="../Full Color - On Dark.png" alt="Casium">
+    </a>
+    <nav class="nav-links">
+      <div class="nav-item">
+        <button class="nav-trigger" type="button">Who we serve <span class="chev"></span></button>
+        <div class="dropdown">
+          <div class="dd-single">
+            <a class="dd-link" href="../business.html"><span class="t">For organizations</span><span class="d">Global mobility for teams of any size</span></a>
+            <a class="dd-link" href="../individuals.html"><span class="t">For individuals</span><span class="d">File your visa with licensed attorneys</span></a>
+          </div>
+        </div>
+      </div>
+      <div class="nav-item">
+        <button class="nav-trigger active" type="button">Resources <span class="chev"></span></button>
+        <div class="dropdown">
+          <div class="dd-single">
+            <a class="dd-link" href="news.html"><span class="t">Immigration News</span><span class="d">Policy changes and processing updates</span></a>
+            <a class="dd-link" href="visa-library.html"><span class="t">Visa Library</span><span class="d">Browse every visa type, one page each</span></a>
+            <a class="dd-link current" href="insights.html"><span class="t">Insights</span><span class="d">Analysis and tips from our immigration team</span></a>
+          </div>
+        </div>
+      </div>
+      <a href="../about.html">Company</a>
+    </nav>
+    <div class="nav-right">
+      <a href="#" class="nav-login">Login</a>
+      <a href="#" class="nav-cta" data-contact>Get in touch</a>
+      <button class="hamburger" id="ham" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobmenu">
+  <a href="../business.html">Organizations</a>
+  <a href="../individuals.html">Individuals</a>
+  <a href="visa-library.html">Visa Library</a>
+  <a href="insights.html">Insights</a>
+  <a href="../about.html">Company</a>
+  <a href="#">Login</a>
+  <a href="#" class="btn btn-primary" data-contact>Get in touch</a>
+</div>
+
+<!-- ===== ARTICLE HEAD ===== -->
+<section class="art-head">
+  <div class="wrap">
+    <div class="art-head-inner">
+      <a href="insights.html" class="back"><span style="font-size:16px">&larr;</span> All insights</a>
+      <div><span class="acat">Petitions</span></div>
+      <h1>Foundations of a strong O-1, EB-1, or EB-2 NIW petition</h1>
+      <p class="art-dek">These cases are won or lost on clarity, not credentials. Here is what makes a petition strong from the very first read, and why the strongest version of a case is rarely the one with the most in it.</p>
+      <div class="byline">
+        <span class="by-av">CL</span>
+        <div>
+          <div class="by-name">Casium Legal Team</div>
+          <div class="by-meta"><span>May 12, 2026</span><span class="dot"></span><span>9 min read</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BODY ===== -->
+<section class="d-body">
+  <div class="wrap d-layout">
+    <aside class="toc">
+      <div class="toc-label">On this page</div>
+      <nav id="toc">
+        <a href="#overview" class="active">Overview</a>
+        <a href="#p1">Work with an expert</a>
+        <a href="#p2">Write for a non-specialist</a>
+        <a href="#p3">Plain language</a>
+        <a href="#p4">Built for skimming</a>
+        <a href="#p5">Concrete evidence</a>
+        <a href="#p6">Answer questions early</a>
+        <a href="#p7">Recommender letters</a>
+        <a href="#p8">Tie back to the criteria</a>
+        <a href="#p9">Verbose vs concise</a>
+      </nav>
+      <div class="toc-cta">
+        <p>Not sure whether your record qualifies?</p>
+        <a href="../individuals.html" class="btn btn-primary">Check if you qualify</a>
+      </div>
+    </aside>
+
+    <div class="content">
+      <section id="overview" class="reveal">
+        <p class="lede">O-1, EB-1, and EB-2 NIW petitions are long, document-heavy, and dense with technical material. The person at the center is usually a deep specialist. The officer deciding the case is a generalist who reads across every field. The petition has to bridge that gap on paper, with no meeting, no follow-up questions, and no chance to fix anything that does not land the first time.</p>
+        <p>This is a look at what a strong petition actually looks like, and why. If you are preparing to file with an immigration team, these are the principles behind the choices your attorney and case manager will make on your behalf. Understanding them makes you a sharper partner in the process, and it explains why the strongest version of your case is often not the version with the most stuff in it.</p>
+      </section>
+
+      <section id="p1" class="reveal">
+        <h2><span class="num">1.</span> Build it with an immigration expert</h2>
+        <p>A petition can look perfectly reasonable to a non-specialist and still miss a regulatory nuance that turns into a request for evidence, a denial, or a shorter approval than the person deserved. Most of the issues that derail cases are invisible to anyone who has not seen hundreds of them in the same category.</p>
+        <p>The strongest petitions come from a real collaboration. You bring deep knowledge of your own work, your field, and your record. The immigration team brings the legal framework, the pattern recognition, and the writing craft. Neither side produces the best version alone, and the drafting itself is specialized work that belongs with people who do it every day.</p>
+      </section>
+
+      <section id="p2" class="reveal">
+        <h2><span class="num">2.</span> The reader is a smart non-specialist</h2>
+        <p>Officers adjudicate across every industry. The same person might review a violinist in the morning and a quantum researcher in the afternoon. They are sharp readers, but they are not in your field.</p>
+        <p>A strong petition is written for a smart colleague from a different department. It assumes basic literacy in ideas like research, peer review, and how an industry works. It does not assume familiarity with your subfield, its acronyms, or its institutions. Anything an officer has to stop and look up pulls them out of the story, and friction never helps a case.</p>
+      </section>
+
+      <section id="p3" class="reveal">
+        <h2><span class="num">3.</span> Plain language is a feature, not a simplification</h2>
+        <p>Every section that introduces your work should open in plain language. The technical detail comes next, and it should stay accessible to an intelligent reader who is not a specialist. A strong opening might read:</p>
+        <div class="example">
+          <div class="lbl">Example opening</div>
+          <p>&ldquo;Dr. Patel develops algorithms that help self-driving cars detect pedestrians at night, when current systems struggle the most. Her contribution is a method called sensor fusion, which combines data from different cameras to produce a clearer picture in low light.&rdquo;</p>
+        </div>
+        <p>The first sentence is something anyone can follow. The second introduces the technical term and defines it in the same breath. From there the petition can move into citation counts, deployments, and impact without ever losing the reader.</p>
+      </section>
+
+      <section id="p4" class="reveal">
+        <h2><span class="num">4.</span> Structure it for skimming</h2>
+        <p>Officers read in layers. They skim first, then go deeper on the parts that matter for the criteria. A strong petition is built for that pattern. Headers say what the section argues, not just what it covers. "Original contributions of major significance" is generic. "A new fraud-detection method now used by three of the top five US banks" lets the officer absorb the argument before reading a single supporting detail.</p>
+        <div class="pullquote">
+          <p>The petition has to hold up under skimming, because that is how it is read.</p>
+        </div>
+      </section>
+
+      <section id="p5" class="reveal">
+        <h2><span class="num">5.</span> Back every claim with concrete evidence</h2>
+        <p>Petitions live and die on specifics. Vague claims read as filler; concrete claims read as evidence. "Widely cited" becomes the actual citation count and what it means in the field. "Led a team" becomes the team size, the project, and the measurable outcome. Every factual claim in a strong petition ties to a piece of documentary evidence in the record. If a fact cannot be supported, it is better left out than left in unsupported, because one weak claim pulls credibility away from the strong ones.</p>
+      </section>
+
+      <section id="p6" class="reveal">
+        <h2><span class="num">6.</span> Answer the questions before they are asked</h2>
+        <p>In a petition there are no follow-up questions. There is only a decision, or a request for evidence if the officer cannot get there from what was filed. A strong petition predicts what an officer will wonder and answers it inside the document: why a career path looks unusual, why a publication record is lighter than expected in a field that publishes at conferences, why a role at a small startup carries more weight than the title suggests. By the end of each section, the officer should have no open questions.</p>
+      </section>
+
+      <section id="p7" class="reveal">
+        <h2><span class="num">7.</span> Recommender letters should sound like real conversations</h2>
+        <p>Expert letters carry significant weight, and they are also where petitions most often go off the rails. Recommenders are busy, and many will accept a draft. The temptation is to fill that draft with jargon because it sounds impressive. Resist it. A letter the officer cannot follow does not help, no matter how senior the person signing it. The best material almost always comes from a real conversation: that a method became standard practice on someone's team, or that they tried to hire the candidate twice. That is what makes a letter persuasive, and it rarely shows up on a CV.</p>
+      </section>
+
+      <section id="p8" class="reveal">
+        <h2><span class="num">8.</span> Tie every section back to the criteria</h2>
+        <p>Every part of a strong petition connects to the legal standard. The reader should never wonder why a fact is in the document. The link between your expertise, the supporting evidence, and the criterion it satisfies is always explicit. Plain language pays off most here, because the officer has to map your story onto the legal standard without losing track of either one.</p>
+      </section>
+
+      <section id="p9" class="reveal">
+        <h2><span class="num">9.</span> As verbose as necessary, as concise as possible</h2>
+        <p>The most common request people make is to add more. Another award, another talk, another criterion that could plausibly be argued. The instinct is that more evidence means a stronger case. It often does the opposite. A focused petition keeps the officer's attention on the strongest parts of the case. A petition packed with marginal details invites them to drift and to question the relevance of what they are reading.</p>
+        <p>The same logic applies at every level. Force-fitting weak evidence under a criterion casts doubt on the criteria where you are genuinely strong. Twenty exhibits of uneven quality are weaker than five strong ones. Knowing what to leave out is one of the most important things an experienced team does, and it is rarely visible to anyone outside the process.</p>
+        <div class="callout">
+          <div class="cl-h"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 4.5-3.2 7.7-8 9-4.8-1.3-8-4.5-8-9V7l8-4z"/><path d="M9 12l2 2 4-4"/></svg>If you are planning to file</div>
+          <p>These cases are difficult, and finding them overwhelming is normal even for people with significant accomplishments. The good news is you do not have to navigate it alone. The easiest place to start is a free profile evaluation: we review your background, tell you honestly which categories fit, and outline what a strong petition would need to look like.</p>
+        </div>
+      </section>
+
+      <div class="author">
+        <div class="author-card">
+          <span class="a-av">CL</span>
+          <div>
+            <div class="a-name">Casium Legal Team</div>
+            <div class="a-role">Licensed immigration attorneys and case managers</div>
+            <p class="a-bio">Our team files O-1, EB-1, and EB-2 NIW petitions every day, for founders, researchers, engineers, and creators. We write about what we see working, and what does not.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RELATED ===== -->
+<section class="related">
+  <div class="wrap">
+    <h4>More from Insights</h4>
+    <div class="rel-grid">
+      <article class="acard" onclick="location.href='insight-article.html'">
+        <span class="rcat petitions">Petitions</span>
+        <div class="rtitle">Understanding the extraordinary ability requirements</div>
+        <div class="rmeta">Mar 25, 2026 · 8 min read</div>
+      </article>
+      <article class="acard" onclick="location.href='insight-article.html'">
+        <span class="rcat founders">Founders</span>
+        <div class="rtitle">How to present a founder&rsquo;s case for extraordinary ability</div>
+        <div class="rmeta">Mar 12, 2026 · 6 min read</div>
+      </article>
+      <article class="acard" onclick="location.href='insight-article.html'">
+        <span class="rcat guides">Guide</span>
+        <div class="rtitle">EB-1 visas: the green card pathway for top talent</div>
+        <div class="rmeta">Apr 14, 2026 · 7 min read</div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>Thinking about an O-1, EB-1, or EB-2 NIW?</h2>
+      <p>Start with a free profile assessment. We will tell you honestly which categories fit your case.</p>
+    </div>
+    <div class="cta-actions">
+      <a href="#" class="btn btn-primary" data-contact>Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="../casium-homepage.html" class="logo" aria-label="Casium home">
+          <img class="logo-img" src="../Full Color - On Dark.png" alt="Casium">
+        </a>
+        <p>The modern standard for business immigration: a licensed law firm, technology platform, and service partner in one.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Temporary visas</h5>
+        <a href="visa-detail.html">O-1</a><a href="#">H-1B</a><a href="#">L-1</a><a href="#">TN</a>
+      </div>
+      <div class="foot-col">
+        <h5>Green cards</h5>
+        <a href="#">EB-1A</a><a href="#">EB-1B</a><a href="#">EB-1C</a><a href="#">EB-2 NIW</a><a href="#">EB-2 PERM</a>
+      </div>
+      <div class="foot-col">
+        <h5>Resources</h5>
+        <a href="news.html">Immigration News</a><a href="visa-library.html">Visa Library</a><a href="insights.html">Insights</a>
+      </div>
+      <div class="foot-col">
+        <h5>Company</h5>
+        <a href="../about.html">Our story</a><a href="#">Careers</a><a href="#">Contact us</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <p>© Casium, Inc. 2026. All rights reserved.</p>
+      <div class="fb-links">
+        <a href="#">Terms of Service</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Policy Updates</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  const onScroll = () => hdr.classList.toggle('scrolled', window.scrollY > 40);
+  onScroll();
+  window.addEventListener('scroll', onScroll, {passive:true});
+  const ham = document.getElementById('ham');
+  const menu = document.getElementById('mobmenu');
+  ham.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+  // reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // TOC scroll-spy
+  const tocLinks = [...document.querySelectorAll('#toc a')];
+  const sections = tocLinks.map(a => document.querySelector(a.getAttribute('href')));
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        const id = '#' + e.target.id;
+        tocLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === id));
+      }
+    });
+  }, {rootMargin:'-20% 0px -70% 0px'});
+  sections.forEach(s => s && spy.observe(s));
+</script>
+
+<!-- ===== CONTACT MODAL ===== -->
+<div class="cm-overlay" id="cmOverlay" role="dialog" aria-modal="true" aria-label="Get in touch">
+  <div class="cm-card">
+    <button class="cm-close" id="cmClose" aria-label="Close"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+    <div class="cm-step" id="cmStepChoose">
+      <div class="cm-eyebrow">Get in touch</div>
+      <h3 class="cm-title" style="text-decoration:none">How can we help?</h3>
+      <p class="cm-desc">Tell us who you are and we'll point you to the right place.</p>
+      <div class="cm-choices">
+        <button class="cm-choice" data-step="business">
+          <span class="ct">For organizations</span>
+          <span class="cd">Sponsor visas and manage immigration for your team.</span>
+        </button>
+        <button class="cm-choice" data-step="individual">
+          <span class="ct">For individuals</span>
+          <span class="cd">Explore your own visa options and pathways.</span>
+        </button>
+      </div>
+    </div>
+    <div class="cm-step" id="cmStepBusiness" hidden>
+      <button class="cm-back" data-back>&larr; Back</button>
+      <div class="cm-eyebrow">Casium for Business</div>
+      <h3 class="cm-title">Request a Demo</h3>
+      <p class="cm-desc">We'll walk you through the capabilities of our platform and show you how Casium can transform your organization's immigration processes, from first filing to full compliance.</p>
+      <form data-form>
+        <div class="cm-grid2">
+          <div class="cm-field"><label>First Name<span class="req">*</span></label><input type="text" required></div>
+          <div class="cm-field"><label>Last Name<span class="req">*</span></label><input type="text" required></div>
+        </div>
+        <div class="cm-field"><label>Work email<span class="req">*</span></label><input type="email" required></div>
+        <div class="cm-grid2">
+          <div class="cm-field"><label>Company Name<span class="req">*</span></label><input type="text" required></div>
+          <div class="cm-field"><label>Job Title<span class="req">*</span></label><input type="text" required></div>
+        </div>
+        <div class="cm-field"><label>How did you learn about Casium?<span class="req">*</span></label><input type="text" required></div>
+        <div class="cm-actions">
+          <button type="submit" class="cm-submit">Submit</button>
+          <button type="button" class="cm-cancel" data-cancel>Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="cm-step" id="cmStepIndividual" hidden>
+      <button class="cm-back" data-back>&larr; Back</button>
+      <div class="cm-eyebrow">Casium for Individuals</div>
+      <h3 class="cm-title">Get your profile assessment</h3>
+      <p class="cm-desc">Fill in the details below and we'll identify the strongest visa pathways available to you based on your claims, achievements, and background.</p>
+      <form data-form>
+        <div class="cm-field"><label>Full Name<span class="req">*</span></label><input type="text" required></div>
+        <div class="cm-field"><label>LinkedIn profile URL<span class="req">*</span></label><input type="url" required></div>
+        <div class="cm-field"><label>Email address<span class="req">*</span></label><input type="email" required></div>
+        <div class="cm-field"><label>Which visa options would you like to explore?<span class="req">*</span></label>
+          <div class="cm-select"><select required><option value="" disabled selected>Select all relevant visa type(s)</option><option>O-1</option><option>H-1B</option><option>L-1</option><option>TN</option><option>EB-1A</option><option>EB-1B</option><option>EB-1C</option><option>EB-2 NIW</option><option>EB-2 PERM</option><option>Not sure yet</option></select></div>
+        </div>
+        <div class="cm-field"><label>How did you learn about Casium?<span class="req">*</span></label><input type="text" required></div>
+        <div class="cm-field"><label>Invite Code (If any…)</label><input type="text"></div>
+        <div class="cm-actions">
+          <button type="submit" class="cm-submit">Submit</button>
+          <button type="button" class="cm-cancel" data-cancel>Cancel</button>
+        </div>
+      </form>
+    </div>
+    <div class="cm-step" id="cmStepThanks" hidden>
+      <div class="cm-thanks">
+        <div class="ct">Thank you.</div>
+        <p>We've received your details and will be in touch shortly.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  (function(){
+    const cmOverlay = document.getElementById('cmOverlay');
+    if(!cmOverlay) return;
+    const cmSteps = {
+      choose: document.getElementById('cmStepChoose'),
+      business: document.getElementById('cmStepBusiness'),
+      individual: document.getElementById('cmStepIndividual'),
+      thanks: document.getElementById('cmStepThanks')
+    };
+    const cmShow = (name) => { Object.values(cmSteps).forEach(s => s.hidden = true); cmSteps[name].hidden = false; };
+    const cmOpen = () => { cmShow('choose'); cmOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; };
+    const cmCloseFn = () => { cmOverlay.classList.remove('open'); document.body.style.overflow = ''; };
+    document.querySelectorAll('[data-contact]').forEach(el => el.addEventListener('click', (e) => { e.preventDefault(); cmOpen(); }));
+    document.getElementById('cmClose').addEventListener('click', cmCloseFn);
+    cmOverlay.addEventListener('click', (e) => { if(e.target === cmOverlay) cmCloseFn(); });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && cmOverlay.classList.contains('open')) cmCloseFn(); });
+    cmOverlay.querySelectorAll('.cm-choice').forEach(b => b.addEventListener('click', () => cmShow(b.dataset.step)));
+    cmOverlay.querySelectorAll('[data-back]').forEach(b => b.addEventListener('click', () => cmShow('choose')));
+    cmOverlay.querySelectorAll('[data-cancel]').forEach(b => b.addEventListener('click', cmCloseFn));
+    cmOverlay.querySelectorAll('[data-form]').forEach(f => f.addEventListener('submit', (e) => { e.preventDefault(); cmShow('thanks'); setTimeout(cmCloseFn, 2200); f.reset(); }));
+  })();
+</script>
+</body>
+</html>
